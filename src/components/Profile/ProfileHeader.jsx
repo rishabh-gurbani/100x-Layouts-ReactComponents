@@ -1,7 +1,8 @@
-import CoverImage from "../assets/images/cover.png"
-import UserAvatar from "../components/UserAvatar"
-import LinkIcon from "../assets/images/calendar-icon.svg"
-import CalendarIcon from "../assets/images/link-icon.svg"
+import PropTypes from 'prop-types'
+import CoverImage from "../../assets/images/cover.png"
+import UserAvatar from "../UserAvatar"
+import LinkIcon from "../../assets/images/calendar-icon.svg"
+import CalendarIcon from "../../assets/images/link-icon.svg"
 
 export default function ProfileHeader ({user}) {
 
@@ -22,7 +23,7 @@ export default function ProfileHeader ({user}) {
             <div className="relative mb-2">
                 <img src={CoverImage} className="w-full" />
                 <div className="absolute -bottom-9.5 left-5">
-                    <UserAvatar user={user.userAvatarPath} size="xxl" outline="true"/>
+                    <UserAvatar user={user.userAvatarPath} size="xxl" outline={true}/>
                 </div>
             </div>
             <section className="px-4 pb-3 border-b border-neutral-700 mb-2">
@@ -59,4 +60,33 @@ export default function ProfileHeader ({user}) {
             </section>
     </header>
     )
+}
+const user = {
+    userName: 'Rishabh Gurbani',
+    userHandle: 'rishabh-gurbani',
+    userAvatarPath: '2',
+    userBio: 'perfectly balanced.',
+    meta:{
+        link: "https://github.com/rishabh-gurbani",
+        linkAbbr: 'github/rishabh-gurbani',
+        joined: 'June 2017',
+    },
+    followers: 118,
+    following: 217,
+}
+
+ProfileHeader.propTypes = { 
+    user: PropTypes.exact({
+        userName: PropTypes.string.isRequired,
+        userHandle: PropTypes.string.isRequired,
+        userAvatarPath: PropTypes.string.isRequired,
+        userBio: PropTypes.string.isRequired,
+        meta: PropTypes.exact({
+            link: PropTypes.string,
+            linkAbbr: PropTypes.string,
+            joined: PropTypes.string.isRequired
+        }),
+        followers: PropTypes.number.isRequired,
+        following: PropTypes.number.isRequired,
+    }),
 }

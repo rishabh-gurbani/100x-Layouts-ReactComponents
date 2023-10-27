@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import UserAvatar1 from '../assets/images/user-avatars/user-avatar-1.png'
 import UserAvatar2 from '../assets/images/user-avatars/user-avatar-2.png'
 import UserAvatar3 from '../assets/images/user-avatars/user-avatar-3.png'
@@ -8,7 +9,7 @@ export default function UserAvatar({user, size="default", outline="false"}) {
     const avatarSizes = {
         default: 9,
         md: 12,
-        xxl: 17,
+        xxl: 12,
     }
 
     const outlineStyle = {
@@ -27,4 +28,10 @@ export default function UserAvatar({user, size="default", outline="false"}) {
     <img src={image[user]} className={"w-"+avatarSizes[size]+" h-"+avatarSizes[size]+" rounded-full " + outlineStyle[outline]} />
   )
 
+}
+
+UserAvatar.propTypes = {
+  user: PropTypes.string.isRequired,
+  size : PropTypes.oneOf(['default', 'md', 'xxl']),
+  outline: PropTypes.bool.isRequired
 }

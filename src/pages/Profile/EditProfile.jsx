@@ -1,7 +1,7 @@
 import ArrowLeft from "../../assets/images/arrow-left.svg"
 import CameraIcon from "../../assets/images/photo.svg"
 import SignUpXIcon from "../../assets/images/signup-screen/signup-x.svg"
-import TextInputField from "../../components/TextInputField"
+import TextInputField from "../../components/SignUp/TextInputField"
 
 function Header () {
     return (

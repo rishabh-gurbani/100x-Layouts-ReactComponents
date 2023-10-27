@@ -1,7 +1,16 @@
-import Check from "../assets/images/signup-screen/valid.svg"
-import EyeIcon from "../assets/images/signup-screen/eye.svg"
+import PropTypes from 'prop-types'
+import Check from "../../assets/images/signup-screen/valid.svg"
+import EyeIcon from "../../assets/images/signup-screen/eye.svg"
 
-export default function TextInputField({fieldName, isCheck, isPassword, outline="default", font="default"}) {
+export default function TextInputField({
+  fieldName="Field Name", 
+  isCheck=false, 
+  isPassword=false, 
+  outline="default", 
+  font="default"
+}) {
+
+  // TODO: make isCheck as isValid and make it a state and not prop, add validation logic
 
   const outlineStyle = {
     default: 500,
@@ -35,4 +44,12 @@ export default function TextInputField({fieldName, isCheck, isPassword, outline=
         </div>
     </fieldset>
   )
+}
+
+TextInputField.propTypes = {
+  fieldName: PropTypes.string.isRequired, 
+  isCheck: PropTypes.bool, 
+  isPassword: PropTypes.bool, 
+  outline: PropTypes.oneOf(['default', 'dark']), 
+  font: PropTypes.oneOf(['light', 'default'])
 }

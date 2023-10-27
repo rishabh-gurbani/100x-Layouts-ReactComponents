@@ -16,8 +16,8 @@ export default function App() {
       {/* <SignUp3 /> */}
       {/* <SignUp4 /> */}
       {/* <Home /> */}
-      {/* <UserProfile /> */}
-      <EditProfile />
+      <UserProfile />
+      {/* <EditProfile /> */}
     </>
   )
 }

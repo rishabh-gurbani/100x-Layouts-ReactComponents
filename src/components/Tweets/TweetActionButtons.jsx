@@ -1,8 +1,8 @@
-import Heart from "../assets/images/tweet-actions/heart.svg"
-import Comment from "../assets/images/tweet-actions/comment.svg"
-import Retweet from "../assets/images/tweet-actions/rt.svg"
-import Share from "../assets/images/tweet-actions/share.svg"
-import Stats from "../assets/images/tweet-actions/stats.svg"
+import Heart from "../../assets/images/tweet-actions/heart.svg"
+import Comment from "../../assets/images/tweet-actions/comment.svg"
+import Retweet from "../../assets/images/tweet-actions/rt.svg"
+import Share from "../../assets/images/tweet-actions/share.svg"
+import Stats from "../../assets/images/tweet-actions/stats.svg"
 
 
 export default function TweetActionButtons () {

@@ -1,7 +1,9 @@
-export default function TabNavigator ({tabs, active = tabs[1]}) {
+import PropTypes from 'prop-types'
+
+export default function TabNavigator ({tabs=['active'], activeTab = 0}) {
 
     const tabComponents = tabs.map(tab => {
-        if(tab===active){
+        if(tab===tabs[activeTab]){
             return (
                 <div key={tab} className="flex flex-col items-center justify-center hover:bg-neutral-800 w-2/4 text-center cursor-pointer relative">
                     <div className="flex items-end py-4 text-neutral-400 font-medium text-16">
@@ -29,4 +31,9 @@ export default function TabNavigator ({tabs, active = tabs[1]}) {
             </div>
         </section>
     )
+}
+
+TabNavigator.propTypes = {
+    tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
+    activeTab: PropTypes.number.isRequired,
 }

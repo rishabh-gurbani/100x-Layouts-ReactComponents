@@ -5,14 +5,14 @@ import HomeIcon from "../../assets/images/home-screen/home-icon.svg"
 import ProfileIcon from "../../assets/images/home-screen/profile.svg"
 import RoundedSnackBar from "../../components/RoundedSnackBar"
 import Timeline from "../../components/Timeline"
-import TabNavigator from "../../components/TabsNavigator"
+import TabNavigator from "../../components/Home/TabsNavigator"
 
 
 function HomeFeedHeader () {
     return (
         <header className="py-3 px-4 flex items-center justify-between border-b border-neutral-700 flex-shrink-0">
             <a href="#" >
-                <UserAvatar user='2'/>
+                <UserAvatar user='2' outline={false}/>
             </a>
             <span className="flex-grow flex justify-center items-center">
                 <img src={Logo} className="w-11" />
@@ -27,7 +27,7 @@ function HomeFeedFooter () {
             <nav>
             <ul className="flex justify-center gap-10">
                 <li>
-                <a href>
+                <a href="#">
                     <button>
                     <img src={HomeIcon} />
                     </button>
@@ -35,7 +35,7 @@ function HomeFeedFooter () {
                 </li>
                 <li>
                 <a href="../UserProfile/UserProfile.html">
-                    <button className>
+                    <button>
                     <img src={ProfileIcon} className="p-1" />
                     </button>
                 </a>
@@ -131,7 +131,7 @@ export default function Home() {
     return (
         <div className='flex flex-col'>
             <HomeFeedHeader />
-            <TabNavigator tabs={tabs}/>
+            <TabNavigator tabs={tabs} activeTab={0}/>
             <div className="pb-16">
                 <Timeline tweets={tweets}/>
             </div>

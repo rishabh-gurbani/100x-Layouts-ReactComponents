@@ -1,6 +1,6 @@
-import OptionPicker from "../../components/OptionPicker"
-import SignUpHeader from "../../components/SignUpHeader"
-import TextInputField from "../../components/TextInputField"
+import OptionPicker from "../../components/SignUp/OptionPicker"
+import SignUpHeader from "../../components/SignUp/SignUpHeader"
+import TextInputField from "../../components/SignUp/TextInputField"
 import Button from "../../components/Button"
 
 function SignUp1() {
@@ -26,7 +26,7 @@ function SignUp1() {
 
     return (
         <>
-        <SignUpHeader step="1" total="4"/>
+        <SignUpHeader currentStep="1" totalSteps="4"/>
         <main className="flex flex-col flex-grow px-4 justify-start items-start w-full">
             <h1 className="text-2xl font-bold mb-5">Create Your Account</h1>
             <form className="w-full flex flex-col gap-8">

@@ -1,6 +1,11 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 
-function Button ({size, variant="default", text, disabled}) {
+function Button ({
+  size="md", 
+  variant="default", 
+  text="add text", 
+  disabled=false,
+}) {
     // states of button
   
     const baseStyles = "py-2 px-6 w-full font-bold text-center flex justify-center items-center shadow-md backdrop-blur-xl rounded-full"; 
@@ -28,6 +33,13 @@ function Button ({size, variant="default", text, disabled}) {
             {text}
         </button>
     );
+}
+
+Button.propTypes = {
+  size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']).isRequired, 
+  variant: PropTypes.oneOf(['primary', 'default', 'outline']).isRequired, 
+  text: PropTypes.string.isRequired, 
+  disabled: PropTypes.bool,
 }
 
 export default Button
