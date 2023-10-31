@@ -1,7 +1,12 @@
 import ProfileHeader from "../../components/Profile/ProfileHeader"
 import Timeline from "../../components/Timeline"
+import {
+    useNavigate,
+  } from "react-router-dom";
 
 export default function UserProfile() {
+
+    const navigate = useNavigate();
 
     const user = {
         userName: 'Rishabh Gurbani',

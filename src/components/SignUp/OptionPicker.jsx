@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 export default function OptionPicker({
     name="Option Picker", 
     options=[], 
-    size="full"
+    size="full",
+    value="",
+    onChange=()=>{},
+    ...rest
 }) {
 
     const optionItems = options.map(option =>
@@ -17,8 +20,8 @@ export default function OptionPicker({
             {name}
             </div>
         </legend>
-        <div className="flex justify-around w-full">
-            <select name={name} className={"w-" +size+ " bg-inherit focus:outline-none focus:ring-0"}>
+        <div className="flex justify-around w-full text-xl">
+            <select name={name} value={value} onChange={onChange} {...rest} className={"w-" +size+ " bg-inherit focus:outline-none focus:ring-0"}>
                 {optionItems}
             </select>
         </div>
@@ -38,4 +41,6 @@ OptionPicker.propTypes = {
         }),
       ])).isRequired,      
     size: PropTypes.oneOf(['min', 'full']),
+    value: PropTypes.string,
+    onChange: PropTypes.func,
 }

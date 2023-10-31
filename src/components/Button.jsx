@@ -5,6 +5,7 @@ function Button ({
   variant="default", 
   text="add text", 
   disabled=false,
+  onClick,
 }) {
     // states of button
   
@@ -29,7 +30,7 @@ function Button ({
     const classes = `${baseStyles} ${sizeStyle[size] ?? ""} ${variantStyle[variant]} ${disabledStyle}`; 
   
     return (
-        <button className={classes} disabled={disabled}>
+        <button type="button" className={classes} disabled={disabled} onClick={onClick}>
             {text}
         </button>
     );
@@ -40,6 +41,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'default', 'outline']).isRequired, 
   text: PropTypes.string.isRequired, 
   disabled: PropTypes.bool,
+  // onClick: PropTypes.function,
 }
 
 export default Button

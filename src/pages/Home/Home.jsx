@@ -6,7 +6,10 @@ import ProfileIcon from "../../assets/images/home-screen/profile.svg"
 import RoundedSnackBar from "../../components/RoundedSnackBar"
 import Timeline from "../../components/Timeline"
 import TabNavigator from "../../components/Home/TabsNavigator"
-
+import {
+    useNavigate,
+  } from "react-router-dom";
+import { useEffect } from "react"
 
 function HomeFeedHeader () {
     return (
@@ -21,24 +24,20 @@ function HomeFeedHeader () {
     )
 }
 
-function HomeFeedFooter () {
+function HomeFeedFooter ({navigate}) {
     return (
         <footer className="fixed bottom-0 py-4 px-6 bg-black w-full border-t border-neutral-800 flex-shrink-0 mt-4">
             <nav>
             <ul className="flex justify-center gap-10">
                 <li>
-                <a href="#">
-                    <button>
-                    <img src={HomeIcon} />
+                    <button onClick={()=>{navigate('/home')}}>
+                        <img src={HomeIcon} />
                     </button>
-                </a>
                 </li>
                 <li>
-                <a href="../UserProfile/UserProfile.html">
-                    <button>
-                    <img src={ProfileIcon} className="p-1" />
+                    <button onClick={()=>{navigate('/profile')}}>
+                        <img src={ProfileIcon} className="p-1" />
                     </button>
-                </a>
                 </li>
             </ul>
             </nav>
@@ -47,6 +46,8 @@ function HomeFeedFooter () {
 }
 
 export default function Home() {
+
+    const navigate = useNavigate();
 
     const tweets = [
         {
@@ -137,7 +138,7 @@ export default function Home() {
             </div>
             <RoundedSnackBar text="Copied to clipboard"/>
             <ActionButton />
-            <HomeFeedFooter />
+            <HomeFeedFooter navigate={navigate}/>
         </div>
     )
 }

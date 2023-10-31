@@ -2,6 +2,9 @@ import ArrowLeft from "../../assets/images/arrow-left.svg"
 import CameraIcon from "../../assets/images/photo.svg"
 import SignUpXIcon from "../../assets/images/signup-screen/signup-x.svg"
 import TextInputField from "../../components/SignUp/TextInputField"
+import {
+    useNavigate,
+} from "react-router-dom";
 
 function Header () {
     return (
