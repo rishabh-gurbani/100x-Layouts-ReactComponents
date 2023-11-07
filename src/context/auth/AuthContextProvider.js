@@ -1,6 +1,6 @@
 import { useState } from "react";
-import AuthContext from "./AuthContext.js";
 import PropTypes from "prop-types";
+import AuthContext from "./AuthContext.js";
 
 const AuthContextProvider = ({children}) => {
     const [authState, setAuthState] = useState(null);

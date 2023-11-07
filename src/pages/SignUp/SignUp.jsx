@@ -1,20 +1,13 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import SignUpHeader from "../../components/SignUp/SignUpHeader"
-import SignupFlowContext from "./SignupFlowContext.jsx";
-import FormInputsContext from "./FormInputsContext.jsx";
+import SignupFlowContext from "../../context/SignupFlowContext.jsx";
+import { FormInputsContextProvider } from "../../context/FormInputsContext.jsx";
 import SignUp1 from "./SignUp1";
 import SignUp2 from "./SignUp2";
 import SignUp3 from "./SignUp3";
 import SignUp4 from "./SignUp4";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-const initFormInputs = {
-    name: "",
-    email: "",
-    day: "1",
-    month: "January",
-    year: "2015",
-}
 
 const signupFlowState = {
     currentStep: 1,
@@ -26,7 +19,6 @@ function SignUp() {
     const navigate = useNavigate();
 
     const [signupFlow, setSignupFlow] = useState(signupFlowState);
-    const [formInputs, setFormInputs] = useState(initFormInputs);
 
     const signUpSteps = {
         1: <SignUp1 />,
@@ -37,7 +29,7 @@ function SignUp() {
 
     return (
         <SignupFlowContext.Provider value={[signupFlow, setSignupFlow]}>
-            <FormInputsContext.Provider value={[formInputs, setFormInputs]}>
+            <FormInputsContextProvider>
                 <SignUpHeader currentStep={`${signupFlow.currentStep}`} totalSteps="4" onClick={()=>
                     signupFlow.currentStep===1 ? navigate('/') : setSignupFlow({
                         ...signupFlow,
@@ -45,7 +37,7 @@ function SignUp() {
                     })
                 }/>
                 {signUpSteps[signupFlow.currentStep]}
-            </FormInputsContext.Provider>
+            </FormInputsContextProvider>
         </SignupFlowContext.Provider>
     )
 }

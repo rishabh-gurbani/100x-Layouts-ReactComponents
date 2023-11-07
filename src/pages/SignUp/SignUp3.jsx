@@ -1,8 +1,8 @@
+import {useContext, useState} from "react";
 import TextInputField from "../../components/SignUp/TextInputField";
 import Button from "../../components/Button";
-import {useContext, useState} from "react";
-import SignupFlowContext from "./SignupFlowContext.jsx";
-import FormInputsContext from "./FormInputsContext.jsx";
+import SignupFlowContext from "../../context/SignupFlowContext.jsx";
+import { FormInputsContext } from "../../context/FormInputsContext.jsx";
 
 function SignUp3() {
     const [signupFlow, setSignupFlow] = useContext(SignupFlowContext);

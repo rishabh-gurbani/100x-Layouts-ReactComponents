@@ -57,7 +57,7 @@ export default {
         "search-bar-fill":"#212327",
         "card-fill":"#16181C",
         "success":"#00BE74",
-        "error":"#8B141A",
+        "error":"#F4212E",
         "sign-up-border":"rgba(29, 155, 240, 0.24)",
         "dob-text":"rgba(255, 255, 255, 0.60)",
       },

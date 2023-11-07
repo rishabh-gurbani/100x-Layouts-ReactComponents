@@ -1,9 +1,9 @@
+import {
+    useNavigate,
+  } from "react-router-dom";
+  import {useState} from "react";
 import TextInputField from "../../components/SignUp/TextInputField"
 import Button from "../../components/Button"
-import {
-  useNavigate,
-} from "react-router-dom";
-import {useState} from "react";
 
 function SignUp4() {
     const [passwordVisible, setPasswordVisible] = useState(false);

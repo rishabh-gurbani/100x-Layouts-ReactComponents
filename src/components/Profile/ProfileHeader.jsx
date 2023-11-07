@@ -9,7 +9,7 @@ export default function ProfileHeader ({user}) {
     const userLink = user.meta.link ? 
         <div className="flex gap-1 w-full">
             <img src={LinkIcon} />
-            <a href={user.meta.link} className="text-twitter-blue">{user.meta.linkAbbr}</a>
+            <a href={user.meta.link} target='blank' className="text-twitter-blue">{user.meta.linkAbbr}</a>
         </div> : <></>
 
     const userJoined = user.meta.joined ? 

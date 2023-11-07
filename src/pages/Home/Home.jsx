@@ -1,3 +1,7 @@
+import {
+    useNavigate,
+  } from "react-router-dom";
+import { useEffect } from "react"
 import Logo from "../../assets/images/logo.svg"
 import UserAvatar from "../../components/UserAvatar"
 import ActionButton from "../../components/ActionButton"
@@ -6,10 +10,6 @@ import ProfileIcon from "../../assets/images/home-screen/profile.svg"
 import RoundedSnackBar from "../../components/RoundedSnackBar"
 import Timeline from "../../components/Timeline"
 import TabNavigator from "../../components/Home/TabsNavigator"
-import {
-    useNavigate,
-  } from "react-router-dom";
-import { useEffect } from "react"
 
 function HomeFeedHeader () {
     return (

@@ -1,8 +1,8 @@
+import { useContext } from "react";
 import TextInputField from "../../components/SignUp/TextInputField";
 import Button from "../../components/Button";
-import { useContext } from "react";
-import SignupFlowContext from "./SignupFlowContext.jsx";
-import FormInputsContext from "./FormInputsContext.jsx";
+import SignupFlowContext from "../../context/SignupFlowContext.jsx";
+import { FormInputsContext } from "../../context/FormInputsContext.jsx";
 
 function SignUp2() {
 
@@ -20,9 +20,9 @@ function SignUp2() {
     <main className="flex flex-col flex-grow px-4 justify-start items-start w-full">
         <h1 className="text-2xl font-bold mb-5">Create Your Account</h1>
         <form className="w-full flex flex-col gap-8">
-            <TextInputField fieldName="Name" isCheck={true} value={formInputs.name} onFocus={onFocus}/>
-            <TextInputField fieldName="Email" isCheck={true} value={formInputs.email} onFocus={onFocus}/>
-            <TextInputField fieldName="Date of birth" isCheck={true} value={dob} onFocus={onFocus}/>
+            <TextInputField fieldName="Name" isCheck={true} value={formInputs.name} onChange={()=>{}} onFocus={onFocus}/>
+            <TextInputField fieldName="Email" isCheck={true} value={formInputs.email} onChange={()=>{}} onFocus={onFocus}/>
+            <TextInputField fieldName="Date of birth" isCheck={true} value={dob} onChange={()=>{}} onFocus={onFocus}/>
         </form>
     </main>
     <section className="flex flex-col mx-4 my-5 px-5 justify-end">

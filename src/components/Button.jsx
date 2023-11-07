@@ -41,7 +41,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'default', 'outline']).isRequired, 
   text: PropTypes.string.isRequired, 
   disabled: PropTypes.bool,
-  // onClick: PropTypes.function,
+  onClick: PropTypes.function,
 }
 
 export default Button

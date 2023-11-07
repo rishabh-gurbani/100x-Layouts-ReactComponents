@@ -1,8 +1,9 @@
-import ProfileHeader from "../../components/Profile/ProfileHeader"
-import Timeline from "../../components/Timeline"
 import {
     useNavigate,
   } from "react-router-dom";
+
+import ProfileHeader from "../../components/Profile/ProfileHeader"
+import Timeline from "../../components/Timeline"
 
 export default function UserProfile() {
 
