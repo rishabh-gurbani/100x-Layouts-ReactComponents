@@ -5,7 +5,7 @@ function Button ({
   variant="default", 
   text="add text", 
   disabled=false,
-  onClick,
+  onClick=()=>{},
 }) {
     // states of button
   
@@ -41,7 +41,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'default', 'outline']).isRequired, 
   text: PropTypes.string.isRequired, 
   disabled: PropTypes.bool,
-  onClick: PropTypes.function,
+  onClick: PropTypes.func,
 }
 
 export default Button

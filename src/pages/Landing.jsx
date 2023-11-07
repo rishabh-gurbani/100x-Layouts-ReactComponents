@@ -34,7 +34,7 @@ function MainContent () {
       <div className="self-start mb-5">
         Already have an account?
       </div>
-      <Button variant="outline" size="lg" text="Sign In"/>
+      <Button variant="outline" size="lg" text="Sign In" />
     </main>
   )
 }
