@@ -1,11 +1,13 @@
-export default function  createAuthUser ({id, username, email}){
-
+// create dummy auth user 
+// simulating server
+export default function createAuthUser ({id, username, email}){
     return {
         id,
         userName: username,
         userHandle: username,
         userAvatarPath: '2',
         email,
+        verified: true,
         userBio: 'perfectly balanced.',
         meta:{
             link: "https://github.com/rishabh-gurbani",
@@ -16,3 +18,5 @@ export default function  createAuthUser ({id, username, email}){
         following: 217,
     };
 }
+
+

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import SignUpHeader from "../../components/SignUp/SignUpHeader"
 import SignupFlowContext from "../../context/SignupFlowContext.jsx";
-import { FormInputsContextProvider } from "../../context/FormInputsContext.jsx";
+import { FormDataProvider } from "../../context/FormDataContext.jsx";
 import SignUp1 from "./SignUp1";
 import SignUp2 from "./SignUp2";
 import SignUp3 from "./SignUp3";
@@ -29,7 +29,7 @@ function SignUp() {
 
     return (
         <SignupFlowContext.Provider value={[signupFlow, setSignupFlow]}>
-            <FormInputsContextProvider>
+            <FormDataProvider>
                 <SignUpHeader currentStep={`${signupFlow.currentStep}`} totalSteps="4" onClick={()=>
                     signupFlow.currentStep===1 ? navigate('/') : setSignupFlow({
                         ...signupFlow,
@@ -37,7 +37,7 @@ function SignUp() {
                     })
                 }/>
                 {signUpSteps[signupFlow.currentStep]}
-            </FormInputsContextProvider>
+            </FormDataProvider>
         </SignupFlowContext.Provider>
     )
 }

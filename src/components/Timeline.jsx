@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'
 import TweetComponent from "./Tweets/TweetComponent"
+import tweetPropTypes from './Tweets/TweetPropTypes'
 
 export default function Timeline ({tweets = []}){
 
-    const tweetComponents = tweets.map(tweet => <TweetComponent key={tweet.id} tweet={tweet}/>)
+    const tweetComponents = tweets.map(
+        tweet => <TweetComponent key={tweet.id} tweet={tweet}/>
+    )
 
     return (
         <main>
@@ -16,19 +19,6 @@ export default function Timeline ({tweets = []}){
 
 Timeline.propTypes = {
     tweets: PropTypes.arrayOf(
-        PropTypes.exact({
-            id: PropTypes.number.isRequired,
-            user: PropTypes.exact({
-              userName: PropTypes.string.isRequired,
-              userHandle: PropTypes.string.isRequired,
-              userAvatarPath: PropTypes.string.isRequired,
-            }).isRequired,
-            timestamp: PropTypes.string.isRequired,
-            tweetContent: PropTypes.string.isRequired,
-            likes: PropTypes.number.isRequired,
-            comments: PropTypes.number.isRequired,
-            retweets: PropTypes.number.isRequired,
-            views: PropTypes.string.isRequired,
-        })
+        tweetPropTypes
     )
 }

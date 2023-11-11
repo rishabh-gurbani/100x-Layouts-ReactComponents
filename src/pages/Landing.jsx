@@ -22,7 +22,7 @@ function MainContent () {
         <h3 className="font-bold">Join today.</h3>
       </section>
       <div className="my-10 w-full">
-        <Button variant="default" size="lg" text="Create account" onClick={()=>{
+        <Button variant="default" size="xl" text="Create account" onClick={()=>{
           navigate('/signup')
         }}/>
       </div>
@@ -34,7 +34,7 @@ function MainContent () {
       <div className="self-start mb-5">
         Already have an account?
       </div>
-      <Button variant="outline" size="lg" text="Sign In" />
+      <Button variant="outline" size="xl" text="Sign In" />
     </main>
   )
 }

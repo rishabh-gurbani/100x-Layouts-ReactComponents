@@ -1,42 +1,28 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import authService from "./services/auth/AuthService";
+import AuthProvider from "./context/AuthContext";
+import Routes from "./pages/Router";
+import LoadingScreen from "./components/LoadingScreen";
 
-import Home from "./pages/Home/Home"
-import Landing from "./pages/Landing"
-import EditProfile from "./pages/Profile/EditProfile"
-import UserProfile from "./pages/Profile/UserProfile"
-import SignUp from "./pages/SignUp/SignUp"
+export default function App () {
+  const [loading, setLoading] = useState(true);
+  const auth = useRef(null);
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Landing/>,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
-  },
-  {
-    path: "/home",
-    element: <Home/>,
-  },
-  {
-    path: "/profile",
-    element: <UserProfile/>,
-  },
-  {
-    path: "/editProfile",
-    element: <EditProfile />
-  },
-]);
+  useEffect(()=>{
+    authService({providerName: 'dummyAuthProvider'})
+        .then((service)=> {
+          setLoading(false);
+          auth.current = service;
+        });
+  }, [])
 
-export default function App() {
+  if (loading) {
+    return <LoadingScreen/>
+  }
 
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <AuthProvider authService={auth.current}>
+      <Routes/>
+    </AuthProvider>
   )
 }

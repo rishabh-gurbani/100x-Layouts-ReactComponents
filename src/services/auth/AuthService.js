@@ -1,16 +1,24 @@
 import dummyAuthProvider from "./DummyAuthProvider.js";
 
-// common auth provider interface. can make use of any provider (firebase, oAuth etc)
-const authService = ({providerName}) => {
+const authProviders = {
+    'dummyAuthProvider': dummyAuthProvider,
+    'oAuthProvider' : null,
+}
 
-    const authProviders = {
-        'dummyAuthProvider': dummyAuthProvider,
-        'oAuthProvider' : null,
-    }
+// Common interface for all auth providers. 
+// Can make use of any provider (firebase, oAuth etc)
+const authService = async ({providerName}) => {
+
     const provider = authProviders[providerName]();
 
-    const getAuthUser = async () =>
-        await provider.getAuthUser();
+    // TODO: Add init function for authService. initialise auth service
+    // and get current state (user, session, token, etc).
+
+    const init =  async () => await provider.init();
+    await init();
+
+    const getAuthUser = () =>
+        provider.getAuthUser();
 
     const login = async ({email, password}) =>
         await provider.login({email, password});
@@ -28,6 +36,7 @@ const authService = ({providerName}) => {
         await provider.logOut();
 
     return {
+        init,
         getAuthUser,
         login,
         register,
@@ -37,3 +46,5 @@ const authService = ({providerName}) => {
     }
 
 }
+
+export default authService
