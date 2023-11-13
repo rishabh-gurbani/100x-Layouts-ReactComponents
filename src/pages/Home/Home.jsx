@@ -15,17 +15,17 @@ export default function Home() {
 
     const navigate = useNavigate();
     const tabs = ['For You', 'Following'];
+    const [activeTab, setActiveTab] = useState(tabs[1]);
 
     const [loading, setLoading] = useState(true);
     
     return (
         <div className='flex flex-col'>
             <HomeFeedHeader />
-            <TabNavigator tabs={tabs} activeTab={0}/>
+            <TabNavigator tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab}/>
             <div className="pb-16">
                 <Timeline tweets={tweets}/>
             </div>
-            <RoundedSnackBar text="Copied to clipboard"/>
             <ActionButton />
             <HomeFeedFooter navigate={navigate}/>
         </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import TweetActionButtons from './TweetActionButtons'
+import TweetActions from './TweetActions.jsx'
 import UserAvatar from "../UserAvatar"
 import tweetPropTypes from "./TweetPropTypes"
 import formattedTimeStamp from "../../utils/FormattedTimeStamp"
@@ -14,6 +14,8 @@ export default function TweetComponent ({tweet}) {
 
     const [ retweets, setRetweets ] = useState(tweet.retweets);
     const [ isRetweeted, setIsRetweeted ] = useState(tweet.isRetweeted);
+
+    // TODO: isLiked, isRetweeted has to be handled in a different way (server side)
 
     const { comments, views } = tweet;
     const stats = {
@@ -55,7 +57,7 @@ export default function TweetComponent ({tweet}) {
                     {tweet.tweetContent}
                 </p>
                 {/* Action Buttons */}
-                <TweetActionButtons stats={stats} handlers={[likeHandler, retweetHandler]}/>
+                <TweetActions stats={stats} handlers={[likeHandler, retweetHandler]}/>
             </div>
 
         </article>
