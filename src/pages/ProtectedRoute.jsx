@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthUser } from "../context/AuthContext";
+import TweetServicesProvider from "../context/TweetServicesContext.jsx";
+import {useAuthUser} from "../hooks/authHooks.js";
 
 export const ProtectedRoute = () => {
     const user = useAuthUser();
@@ -8,6 +9,10 @@ export const ProtectedRoute = () => {
       return <Navigate to="/signup" />;
     }
   
-    return <Outlet />;
+    return(
+        <TweetServicesProvider>
+            <Outlet />
+        </TweetServicesProvider>
+    )
   };
   

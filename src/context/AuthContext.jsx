@@ -1,8 +1,8 @@
-import { useState, createContext, useContext } from "react";
+import {createContext, useState} from "react";
 import PropTypes from "prop-types";
 
-const AuthUserContext = createContext(null);
-const AuthActionsContext = createContext(null);
+export const AuthUserContext = createContext(null);
+export const AuthActionsContext = createContext(null);
 
 const AuthProvider = ({authService, children}) => {
 
@@ -24,6 +24,10 @@ const AuthProvider = ({authService, children}) => {
         sendVerificationCode: authService.sendVerificationCode,
         verifyCode: async ({code}) => {
             return await authService.verifyCode({code});
+        },
+        updateUser: async ({user}) => {
+            const updatedUser = await authService.updateUser({user});
+            setCurrentUser(updatedUser);
         }
     }
     
@@ -36,13 +40,9 @@ const AuthProvider = ({authService, children}) => {
     )
 }
 
-const useAuthUser = () => useContext(AuthUserContext);
-const useAuthService = () => useContext(AuthActionsContext);
-
 AuthProvider.propTypes = {
     authService: PropTypes.object.isRequired,
     children: PropTypes.node.isRequired,
 }
 
 export default AuthProvider ;
-export { useAuthUser, useAuthService };

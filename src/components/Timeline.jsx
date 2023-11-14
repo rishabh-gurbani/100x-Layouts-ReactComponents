@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import TweetComponent from "./Tweets/TweetComponent"
-import tweetPropTypes from './Tweets/TweetPropTypes'
+import tweetPropTypes from '../prop-types/TweetPropTypes.js'
 
 export default function Timeline ({tweets = []}){
 

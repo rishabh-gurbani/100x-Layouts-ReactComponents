@@ -10,9 +10,10 @@ import Landing from "./Landing"
 import EditProfile from "./Profile/EditProfile"
 import UserProfile from "./Profile/UserProfile"
 import SignUp from "./SignUp/SignUp"
+import ComposeTweet from "./Compose/ComposeTweet.jsx";
 
-import { useAuthUser } from "../context/AuthContext"
 import { ProtectedRoute } from "./ProtectedRoute"
+import { useAuthUser } from "../hooks/authHooks.js";
 
 const Routes = () => {
     const [user, setUser] = useState(useAuthUser());
@@ -46,8 +47,12 @@ const Routes = () => {
                     element: <UserProfile/>,
                 },
                 {
-                    path: "/editProfile",
-                    element: <EditProfile />
+                    path: "/edit-profile",
+                    element: <EditProfile/>
+                },
+                {
+                    path: "/compose-tweet",
+                    element: <ComposeTweet/>
                 },
             ]   
         },

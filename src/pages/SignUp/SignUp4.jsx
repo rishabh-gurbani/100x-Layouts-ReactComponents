@@ -3,10 +3,11 @@ import {
   } from "react-router-dom";
 import { useContext, useState } from "react";
 
-import { useAuthService } from "../../context/AuthContext"
 import TextInputField from "../../components/SignUp/TextInputField"
 import Button from "../../components/Button"
+import { validatePassword } from "../../utils/FormValidation.js"
 import { FormData } from "../../context/FormDataContext.jsx";
+import { useAuthService } from "../../hooks/authHooks.js";
 
 function SignUp4() {
     const [password, setPassword] = useState('');
@@ -14,6 +15,18 @@ function SignUp4() {
     const navigate = useNavigate();
     const formData = useContext(FormData);
     const authService = useAuthService();
+
+    const submitForm = async (e) => {
+        const data = formData[0];
+        const {name, email} =  data;
+        e.target.disabled = true;
+        await authService.register({
+            username: name,
+            email,
+            password
+        })
+        navigate('/home');
+    }
 
     return (
     <>
@@ -26,21 +39,9 @@ function SignUp4() {
         </form>
     </main>
     <section className="flex flex-col mx-4 my-5 px-5 justify-end">
-        <Button variant="default" size="xl" text="Next" onClick = {
-            async (e) => {
-                const data = formData[0];
-                console.log(data);
-                const {name, email} =  data;
-                console.log(name);
-                e.target.disabled = true;
-                await authService.register({
-                    username: name.replace(/\s+/g, '').toLowerCase(),
-                    email,
-                    password
-                })
-                navigate('/home');
-            }}
-        />
+        <Button variant="default" size="xl" onClick = {submitForm}>
+            Next
+        </Button>
     </section>
     </>
     )

@@ -9,7 +9,7 @@ export default function UserAvatar({user, size="default", outline="false"}) {
     const avatarSizes = {
         default: 9,
         md: 12,
-        xxl: 12,
+        xxl: 20,
     }
 
     const outlineStyle = {
@@ -33,5 +33,5 @@ export default function UserAvatar({user, size="default", outline="false"}) {
 UserAvatar.propTypes = {
   user: PropTypes.string.isRequired,
   size : PropTypes.oneOf(['default', 'md', 'xxl']),
-  outline: PropTypes.bool.isRequired
+  outline: PropTypes.bool
 }

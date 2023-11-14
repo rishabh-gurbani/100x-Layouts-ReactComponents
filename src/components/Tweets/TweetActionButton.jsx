@@ -5,7 +5,8 @@ import Comment from "./Icons/Comment.jsx";
 import Share from "./Icons/Share.jsx";
 import Stats from "./Icons/Stats.jsx";
 
-
+// styles for tailwind inference at build time
+// dynamic styles are not like bg-{primary} not loaded by tailwind
 // eslint-disable-next-line no-unused-vars
 const requiredStyles = {
     'strokes': 'stroke-red-like stroke-green-success stroke-twitter-blue',
@@ -13,7 +14,7 @@ const requiredStyles = {
     'text': 'text-green-success text-red-like text-twitter-blue',
     'hover-texts': 'group-hover:text-green-success group-hover:text-red-like group-hover:text-twitter-blue',
     'bg': 'group-hover:bg-red-like-hover group-hover:bg-green-success-hover group-hover:bg-twitter-blue-hover',
-    'fill': 'group-hover:fill-red-like group-hover:fill-twitter-blue'
+    'fill': 'group-hover:fill-red-like group-hover:fill-twitter-blue fill-red-like'
 }
 
 const TweetActionButton = ({iconName, iconValue, isActive, primaryColor, toFill, ...rest}) => {

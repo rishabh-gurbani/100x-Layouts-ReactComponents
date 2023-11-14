@@ -2,10 +2,8 @@ import createAuthUser from "./CreateAuthUser.js";
 
 export default function dummyAuthProvider () {
 
-    const authToken = localStorage.getItem("token");
-
-    let AuthUser;
-    const getAuthUser = () => AuthUser;
+    let authUser;
+    const getAuthUser = () => authUser;
 
     // TODO: Add init function for authService. initialise auth service
     // and get current user from token and other states (user, session, token, etc).
@@ -16,8 +14,8 @@ export default function dummyAuthProvider () {
         // returning dummy user here
         // in reality, will fetch user details from auth token
         if (token) {
-            AuthUser = createAuthUser({id: 2345, username: 'rishabh-gurbani', email: 'r@g.com'});
-            return AuthUser;
+            authUser = JSON.parse(localStorage.getItem('authUser'));
+            return authUser;
         }
     }
 
@@ -27,30 +25,31 @@ export default function dummyAuthProvider () {
         localStorage.setItem('token',token);
     }
 
+    // eslint-disable-next-line no-unused-vars
     const login = async ({email, password})=> {
-        console.log(email, password);
         await delay(2000);
 
-        const isTokenExpired = true;
-        if (isTokenExpired) createAndSetAuthToken();
+        const isTokenExpired = false;
+        if (isTokenExpired) {
+            // perform login with email and password
+            createAndSetAuthToken();
+        }
 
-        // get data of user and return user
-        // get userID by email and password, get data of user and return
-        // returning dummy user here
-        const randomUserID = Math.floor(Math.random()*1000);
-        AuthUser = createAuthUser({id: randomUserID, username: 'rishabh-gurbani', email});
-        return AuthUser;
+        // should ideally happen on the backend by verifying the auth token
+        // using local storage for now
+        authUser = JSON.parse(localStorage.getItem('authUser'));
+        return authUser;
     }
 
     const register = async ({username, email, password}) => {
-        console.log(username, email, password);
         await delay(2000);
         // send request to register
         // try { } catch { }
         const randomUserID = Math.floor(Math.random()*1000);
-        AuthUser = createAuthUser({id: randomUserID, username, email});
+        authUser = createAuthUser({id: randomUserID, username, email});
         createAndSetAuthToken();
-        return AuthUser;
+        localStorage.setItem('authUser', JSON.stringify(authUser));
+        return authUser;
     }
 
     let verificationCode; // only for demo
@@ -59,7 +58,7 @@ export default function dummyAuthProvider () {
         await delay(2000);
         // server sends a 6 digit verification code
         verificationCode = Math.floor(100000 + Math.random() * 900000);
-        console.log(verificationCode);
+        console.log("Verification Code: ", verificationCode);
     }
 
     const verifyCode = async ({code}) => {
@@ -67,10 +66,17 @@ export default function dummyAuthProvider () {
         return code === verificationCode;
     }
 
+    const updateUser = async ({user}) => {
+        await delay(1000);
+        authUser = user;
+        localStorage.setItem('authUser', JSON.stringify(authUser));
+        return authUser;
+    }
+
     const logOut = async () => {
         await delay(2000);
         localStorage.removeItem('token');
-        AuthUser = null;
+        authUser = null;
     }
 
     return {
@@ -80,6 +86,7 @@ export default function dummyAuthProvider () {
         register,
         sendVerificationCode,
         verifyCode,
+        updateUser,
         logOut,
     }
 }

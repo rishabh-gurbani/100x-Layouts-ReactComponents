@@ -23,14 +23,17 @@ const authService = async ({providerName}) => {
     const login = async ({email, password}) =>
         await provider.login({email, password});
 
-    const register = async ({email, password}) =>
-        await provider.register({email, password});
+    const register = async ({username, email, password}) =>
+        await provider.register({username, email, password});
 
     const sendVerificationCode = async () =>
         await provider.sendVerificationCode();
 
     const verifyCode = async ({code}) =>
         await provider.verifyCode({code});
+
+    const updateUser = async ({user}) =>
+        await provider.updateUser({user})
 
     const logOut = async () =>
         await provider.logOut();
@@ -42,6 +45,7 @@ const authService = async ({providerName}) => {
         register,
         sendVerificationCode,
         verifyCode,
+        updateUser,
         logOut,
     }
 

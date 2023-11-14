@@ -22,9 +22,11 @@ function MainContent () {
         <h3 className="font-bold">Join today.</h3>
       </section>
       <div className="my-10 w-full">
-        <Button variant="default" size="xl" text="Create account" onClick={()=>{
+        <Button variant="default" size="xl" onClick={()=>{
           navigate('/signup')
-        }}/>
+        }}>
+            Create account
+        </Button>
       </div>
       <div className="flex items-center w-full mb-10">
         <div className="flex-grow border border-b border-neutral-700" />
@@ -34,7 +36,9 @@ function MainContent () {
       <div className="self-start mb-5">
         Already have an account?
       </div>
-      <Button variant="outline" size="xl" text="Sign In" />
+        <Button variant="outline" size="xl">
+            Sign In
+        </Button>
     </main>
   )
 }

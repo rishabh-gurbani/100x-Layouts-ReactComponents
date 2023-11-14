@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import TweetActions from './TweetActions.jsx'
 import UserAvatar from "../UserAvatar"
-import tweetPropTypes from "./TweetPropTypes"
+import tweetPropTypes from "../../prop-types/TweetPropTypes.js"
 import formattedTimeStamp from "../../utils/FormattedTimeStamp"
 
 export default function TweetComponent ({tweet}) {

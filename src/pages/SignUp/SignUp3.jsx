@@ -1,10 +1,10 @@
 import {useContext, useState} from "react";
 
-import { useAuthService } from "../../context/AuthContext.jsx"
 import TextInputField from "../../components/SignUp/TextInputField";
 import Button from "../../components/Button";
 import SignupFlowContext from "../../context/SignupFlowContext.jsx";
 import { FormData } from "../../context/FormDataContext.jsx";
+import {useAuthService} from "../../hooks/authHooks.js";
 
 function SignUp3() {
     const authService = useAuthService();
@@ -12,6 +12,17 @@ function SignUp3() {
     const [formData, setData] = useContext(FormData);
     const [verificationCode, setVerificationCode] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+
+    const verificationCodeHandler = async (e) => {
+        e.target.disabled = true;
+        const match = await authService.verifyCode({code: Number(verificationCode)});
+        if(match){
+            setSignupFlow({...signupFlow, currentStep: signupFlow.currentStep+1});
+        }else{
+            setVerificationCode('');
+            setErrorMessage('Incorrect verification code');
+        }
+    }
 
     return (
     <>
@@ -26,19 +37,10 @@ function SignUp3() {
         </div>
     </main>
     <section className="flex flex-col mx-4 my-5 px-5 justify-end">
-        <Button variant="default" size="xl" text="Next" disabled={!(verificationCode.length===6)} 
-            onClick={ async (e) =>
-            {   
-                e.target.disabled = true;
-                const match = await authService.verifyCode({code: Number(verificationCode)});
-                if(match){
-                    setSignupFlow({...signupFlow, currentStep: signupFlow.currentStep+1});
-                }else{
-                    setVerificationCode('');
-                    setErrorMessage('Incorrect verification code');
-                }
-            }
-        }/>
+        <Button variant="default" size="xl" disabled={!(verificationCode.length===6)}
+            onClick={verificationCodeHandler}>
+            Next
+        </Button>
     </section>
     </>
   )

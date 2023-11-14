@@ -32,7 +32,7 @@ const validateEmail = (email) => {
   };
   
 const validateUsername = (username) => {
-    const usernameRegex = /^[a-zA-Z0-9_\-]{3,20}$/;
+    const usernameRegex = /^[a-zA-Z0-9_\- ]{3,20}$/;
     const errorMessages = {
       usernameLengthError: 'Username should be between 3 and 20 characters.',
       usernameCharactersError: 'Username can only contain letters, numbers, underscores, and hyphens.',

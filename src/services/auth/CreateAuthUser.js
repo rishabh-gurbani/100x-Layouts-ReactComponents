@@ -1,10 +1,9 @@
-// create dummy auth user 
-// simulating server
+// create dummy auth user, simulating server
 export default function createAuthUser ({id, username, email}){
     return {
         id,
         userName: username,
-        userHandle: username,
+        userHandle: username.replace(/\s+/g, '').toLowerCase(),
         userAvatarPath: '2',
         email,
         verified: true,

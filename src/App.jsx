@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import authService from "./services/auth/AuthService";
-import AuthProvider from "./context/AuthContext";
+import AuthProvider from "./context/AuthContext.jsx";
 import Routes from "./pages/Router";
 import LoadingScreen from "./components/LoadingScreen";
 

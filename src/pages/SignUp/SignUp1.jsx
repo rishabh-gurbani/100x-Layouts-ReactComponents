@@ -76,10 +76,12 @@ function SignUp1() {
             </form>
         </main>
         <section className="flex flex-col mx-4 my-5 px-5 justify-end">
-            <Button disabled={!canMoveToNextStep()} variant="default" size="xl" text="Create account" onClick={()=>{
+            <Button disabled={!canMoveToNextStep()} variant="default" size="xl" onClick={()=>{
                 setSignupFlow({...signupFlow, currentStep: signupFlow.currentStep+1})
             }}
-            />
+            >
+                Create account
+            </Button>
         </section>
     </>
     )

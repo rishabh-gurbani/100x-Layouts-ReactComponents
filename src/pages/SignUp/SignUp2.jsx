@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
-import { useAuthService } from "../../context/AuthContext"
 import TextInputField from "../../components/SignUp/TextInputField";
 import Button from "../../components/Button";
 import SignupFlowContext from "../../context/SignupFlowContext.jsx";
 import { FormData } from "../../context/FormDataContext.jsx";
+import {useAuthService} from "../../hooks/authHooks.js";
 
 function SignUp2() {
 
@@ -30,11 +30,13 @@ function SignUp2() {
         </form>
     </main>
     <section className="flex flex-col mx-4 my-5 px-5 justify-end">
-      <Button variant="primary" size="xl" text="Sign up" onClick={()=>{
+      <Button variant="primary" size="xl" onClick={()=>{
         setSignupFlow({...signupFlow, currentStep: signupFlow.currentStep+1
         });
         authService.sendVerificationCode();
-      }}/>
+      }}>
+          Sign up
+      </Button>
     </section>
     </>
   )
