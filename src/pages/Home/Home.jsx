@@ -24,6 +24,10 @@ export default function Home() {
     const loading = feed[activeTabIndex].length === 0;
 
     useEffect(()=> {
+        fetchTweets()
+    }, [activeTabIndex])
+
+    const fetchTweets = async () => {
         const fetchCachedData = async () => {
             const cachedTweets = await tweetService.getCachedTweets(activeTabIndex);
             setFeed(feed.map((tab, index)=>{
@@ -34,7 +38,7 @@ export default function Home() {
 
         if(loading) fetchCachedData();
 
-        const fetchTweets = async () => {
+        const fetchNewTweets = async () => {
             const tweets = await tweetService.getTweets(activeTabIndex);
             setFeed(feed.map((tab, index)=> {
                 if(index===activeTabIndex) return tweets
@@ -42,9 +46,8 @@ export default function Home() {
             }));
         }
 
-        fetchTweets()
-
-    }, [activeTabIndex])
+        fetchNewTweets()
+    }
 
     return (
         <div className='flex flex-col h-full'>

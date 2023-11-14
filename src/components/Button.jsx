@@ -33,7 +33,7 @@ function Button({
         none: "bg-inherit"
     }; // bg-blue-500
 
-    const disabledStyle = "pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed"; // disabled styles
+    const disabledStyle = "disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed"; // disabled styles
 
     const classes = `${baseStyles} ${widthStyle} ${sizeStyle[size] ?? ""} ${variantStyle[variant]} ${disabledStyle} ${position}`;
 
