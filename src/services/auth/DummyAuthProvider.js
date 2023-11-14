@@ -5,8 +5,8 @@ export default function dummyAuthProvider () {
     let authUser;
     const getAuthUser = () => authUser;
 
-    // TODO: Add init function for authService. initialise auth service
-    // and get current user from token and other states (user, session, token, etc).
+    // TODO: Modify init function for authService
+    //  get current user from token and other states (user, session, token, etc).
 
     const init = async () => {
         await delay(1000);
@@ -42,6 +42,9 @@ export default function dummyAuthProvider () {
     }
 
     const register = async ({username, email, password}) => {
+
+        // TODO: figure out where to hash the password
+
         await delay(2000);
         // send request to register
         // try { } catch { }

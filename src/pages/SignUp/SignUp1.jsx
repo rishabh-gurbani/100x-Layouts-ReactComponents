@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import OptionPicker from "../../components/SignUp/OptionPicker";
-import TextInputField from "../../components/SignUp/TextInputField";
+import TextInputField from "../../components/TextInputField.jsx";
 import Button from "../../components/Button";
 import SignupFlowContext from "../../context/SignupFlowContext.jsx";
 import { FormData } from "../../context/FormDataContext.jsx";
@@ -27,8 +27,9 @@ function SignUp1() {
     const handleFormInputChange = (e) => {
         const inputFieldName = e.target.name.toLowerCase();
         setFormData({...formData, [inputFieldName]: e.target.value});
-        const isValid = validationFunction[inputFieldName](e.target.value);
-        setInputErrors({...inputErrors, [inputFieldName]: [!isValid[0], isValid[1]]});
+        const targetValidationFunction = validationFunction[inputFieldName];
+        const [isValid, errorMessage] = targetValidationFunction ? targetValidationFunction(e.target.value) : true;
+        setInputErrors({...inputErrors, [inputFieldName]: [!isValid, errorMessage]});
     }
 
     const months = [

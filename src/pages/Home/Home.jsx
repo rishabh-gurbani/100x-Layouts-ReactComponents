@@ -25,6 +25,10 @@ export default function Home() {
 
     useEffect(()=> {
         fetchTweets()
+
+        // nothing to ignore or interrupt as of now
+        // later ignore the response of the request
+        return ()=>{}
     }, [activeTabIndex])
 
     const fetchTweets = async () => {

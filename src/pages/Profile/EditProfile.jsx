@@ -3,7 +3,7 @@ import {
 } from "react-router-dom";
 import CameraIcon from "../../assets/images/photo.svg"
 import SignUpXIcon from "../../assets/images/signup-screen/signup-x.svg"
-import TextInputField from "../../components/SignUp/TextInputField"
+import TextInputField from "../../components/TextInputField.jsx"
 import PageHeader from "../../components/PageHeader.jsx";
 import {useState} from "react";
 import {useAuthService, useAuthUser} from "../../hooks/authHooks.js";

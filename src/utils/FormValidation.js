@@ -1,9 +1,9 @@
 const validatePassword = (password) => {
-    const lengthRegex = /^.{7,12}$/;
+    const lengthRegex = /^.{8,12}$/;
     const complexityRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/;
   
     const errorMessages = {
-      lengthError: 'Password should be between 7 and 12 characters long.',
+      lengthError: 'Password should be between 8 and 12 characters long.',
       complexityError: 'Password must contain lowercase, uppercase, number, and a special character.',
     };
   

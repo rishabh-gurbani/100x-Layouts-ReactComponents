@@ -1,6 +1,6 @@
 import {useContext, useState} from "react";
 
-import TextInputField from "../../components/SignUp/TextInputField";
+import TextInputField from "../../components/TextInputField.jsx";
 import Button from "../../components/Button";
 import SignupFlowContext from "../../context/SignupFlowContext.jsx";
 import { FormData } from "../../context/FormDataContext.jsx";

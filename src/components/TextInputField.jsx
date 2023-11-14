@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import Check from "../../assets/images/signup-screen/valid.svg"
-import EyeIcon from "../../assets/images/signup-screen/eye.svg"
+import Check from "../assets/images/signup-screen/valid.svg"
+import EyeIcon from "../assets/images/signup-screen/eye.svg"
 
 export default function TextInputField({
   fieldName="Field Name",
