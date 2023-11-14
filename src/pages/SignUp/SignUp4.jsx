@@ -45,7 +45,7 @@ function SignUp4() {
         </form>
     </main>
     <section className="flex flex-col mx-4 my-5 px-5 justify-end">
-        <Button variant="default" size="xl" onClick = {submitForm}>
+        <Button variant="default" size="xl" onClick = {submitForm} disabled={passwordError[0]}>
             Next
         </Button>
     </section>
